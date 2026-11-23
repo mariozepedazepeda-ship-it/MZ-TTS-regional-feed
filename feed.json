@@ -1,5 +1,64 @@
 {
-  "format": "cue-mz-tts-regional-feed-v1",
-  "schema_version": 1,
-  "packages": []
+  "format": "cue-mz-tts-regional-feed-v2",
+  "schema_version": 2,
+  "releases": [
+    {
+      "bundle_id": "mztts-es-cl-extenso-24918-v1.0.0",
+      "profile_id": "es-CL",
+      "profile_name": "Chile (es-CL) — Extenso",
+      "language_tag": "es-CL",
+      "bundle_version": "1.0.0",
+      "entry_count": 24918,
+      "shards": [
+        {
+          "shard_index": 1,
+          "package_id": "mztts-es-cl-extenso-24918-v1.0.0-p01",
+          "package_format": "cue-mz-tts-regional-package-v1",
+          "profile_id": "es-CL",
+          "profile_name": "Chile (es-CL) — Extenso",
+          "language_tag": "es-CL",
+          "package_version": "1.0.0",
+          "download_url": "https://mariozepedazepeda-ship-it.github.io/MZ-TTS-regional-feed/packages/mztts-es-cl-extenso-24918-v1.0.0-p01.mzrp",
+          "sha256": "f315cbfca8ce40be2b2e3546da1fb00fe78d0ca26b44d2374200ae9e3ae6b099",
+          "provenance": "licensed",
+          "license": "CC-BY-SA-4.0",
+          "attribution": "Adaptación de VoiceGarden es v0.6.1: grafías de Wiktionary, CC BY-SA 4.0, con atribución a sus colaboradores. La lista spa-LatAm v0.6.1 (MIT) solo prioriza; no se usan fonemas.",
+          "source": "https://github.com/AACTools/voicegarden-lexicons/releases/tag/v0.6.1",
+          "entry_count": 9976
+        },
+        {
+          "shard_index": 2,
+          "package_id": "mztts-es-cl-extenso-24918-v1.0.0-p02",
+          "package_format": "cue-mz-tts-regional-package-v1",
+          "profile_id": "es-CL",
+          "profile_name": "Chile (es-CL) — Extenso",
+          "language_tag": "es-CL",
+          "package_version": "1.0.0",
+          "download_url": "https://mariozepedazepeda-ship-it.github.io/MZ-TTS-regional-feed/packages/mztts-es-cl-extenso-24918-v1.0.0-p02.mzrp",
+          "sha256": "c7712e94e0d3ee3372fda2cc3a54104ca0970560c9cd226b3b46b04b03db9903",
+          "provenance": "licensed",
+          "license": "CC-BY-SA-4.0",
+          "attribution": "Adaptación de VoiceGarden es v0.6.1: grafías de Wiktionary, CC BY-SA 4.0, con atribución a sus colaboradores. La lista spa-LatAm v0.6.1 (MIT) solo prioriza; no se usan fonemas.",
+          "source": "https://github.com/AACTools/voicegarden-lexicons/releases/tag/v0.6.1",
+          "entry_count": 9961
+        },
+        {
+          "shard_index": 3,
+          "package_id": "mztts-es-cl-extenso-24918-v1.0.0-p03",
+          "package_format": "cue-mz-tts-regional-package-v1",
+          "profile_id": "es-CL",
+          "profile_name": "Chile (es-CL) — Extenso",
+          "language_tag": "es-CL",
+          "package_version": "1.0.0",
+          "download_url": "https://mariozepedazepeda-ship-it.github.io/MZ-TTS-regional-feed/packages/mztts-es-cl-extenso-24918-v1.0.0-p03.mzrp",
+          "sha256": "55657df3f01fef7c1894b7807da03dd4a48da4ba46b9aa7895e78666e2be63a6",
+          "provenance": "licensed",
+          "license": "CC-BY-SA-4.0",
+          "attribution": "Adaptación de VoiceGarden es v0.6.1: grafías de Wiktionary, CC BY-SA 4.0, con atribución a sus colaboradores. La lista spa-LatAm v0.6.1 (MIT) solo prioriza; no se usan fonemas.",
+          "source": "https://github.com/AACTools/voicegarden-lexicons/releases/tag/v0.6.1",
+          "entry_count": 4981
+        }
+      ]
+    }
+  ]
 }
