@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mariozepedazepeda-ship-it.github.io/MZ-TTS-regional-feed/feed-v1.schema.json",
+  "title": "Cue MZ TTS regional pronunciation feed v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "schema_version", "packages"],
+  "properties": {
+    "format": {
+      "const": "cue-mz-tts-regional-feed-v1"
+    },
+    "schema_version": {
+      "const": 1
+    },
+    "packages": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/package"
+      }
+    }
+  },
+  "$defs": {
+    "package": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "package_id",
+        "package_format",
+        "profile_id",
+        "profile_name",
+        "language_tag",
+        "package_version",
+        "download_url",
+        "sha256",
+        "provenance",
+        "license",
+        "attribution",
+        "source",
+        "entry_count"
+      ],
+      "properties": {
+        "package_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9.-]*$",
+          "maxLength": 100
+        },
+        "package_format": {
+          "const": "cue-mz-tts-regional-package-v1"
+        },
+        "profile_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 35
+        },
+        "profile_name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "language_tag": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 35
+        },
+        "package_version": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+        },
+        "download_url": {
+          "type": "string",
+          "pattern": "^https://",
+          "format": "uri"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "provenance": {
+          "enum": ["synthetic", "licensed"]
+        },
+        "license": {
+          "enum": ["CC0-1.0", "CC-BY-4.0", "CC-BY-SA-4.0"]
+        },
+        "attribution": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        },
+        "entry_count": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "provenance": {
+                "const": "synthetic"
+              }
+            },
+            "required": ["provenance"]
+          },
+          "then": {
+            "properties": {
+              "source": {
+                "const": "synthetic"
+              }
+            },
+            "required": ["source"]
+          },
+          "else": {
+            "properties": {
+              "source": {
+                "pattern": "^https://"
+              }
+            },
+            "required": ["source"]
+          }
+        }
+      ]
+    }
+  }
+}
