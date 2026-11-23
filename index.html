@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Índice público vacío para futuros paquetes regionales de pronunciación de MZ TTS.">
-  <title>Feed regional de MZ TTS</title>
+  <meta name="description" content="Feed público MZ TTS: primer conjunto Extenso de Chile, versión 1.0.0, con 24.918 reglas ortográficas en tres fragmentos.">
+  <title>Feed regional de pronunciación para MZ TTS</title>
   <style>
     :root { color-scheme: light dark; font-family: system-ui, sans-serif; }
     body { max-width: 48rem; margin: 0 auto; padding: 2rem 1rem; line-height: 1.6; }
@@ -16,11 +16,25 @@
 <body>
   <main>
     <h1>Feed regional de pronunciación para MZ TTS</h1>
-    <p class="status"><strong>Estado:</strong> el feed está vacío; no hay paquetes publicados.</p>
-    <p>Esta página solo aloja un índice estático. La aplicación MZ TTS todavía no consulta este feed ni descarga paquetes automáticamente.</p>
-    <p><a href="./feed.json">Abrir el índice JSON</a></p>
-    <p><a href="./feed-v1.schema.json">Ver el esquema del feed</a></p>
-    <p>Antes de publicar cualquier paquete futuro, se deberá revisar su procedencia, licencia y atribución.</p>
+    <p class="status"><strong>Release publicado:</strong> Chile (es-CL) — Extenso, versión 1.0.0; 24.918 reglas de palabras en tres fragmentos.</p>
+    <p>El conjunto excluye 82 propuestas pendientes de frases y topónimos. No contiene fonemas ni datos de voz.</p>
+
+    <h2>Índice y paquetes</h2>
+    <ul>
+      <li><a href="./feed.json">Abrir el índice JSON v2</a></li>
+      <li><a href="./feed-v2.schema.json">Ver el esquema JSON v2</a></li>
+      <li><a href="./feed-v1.schema.json">Ver el esquema legado v1</a></li>
+      <li><a href="./packages/mztts-es-cl-extenso-24918-v1.0.0-p01.mzrp">Descargar fragmento 1: 9.976 reglas</a></li>
+      <li><a href="./packages/mztts-es-cl-extenso-24918-v1.0.0-p02.mzrp">Descargar fragmento 2: 9.961 reglas</a></li>
+      <li><a href="./packages/mztts-es-cl-extenso-24918-v1.0.0-p03.mzrp">Descargar fragmento 3: 4.981 reglas</a></li>
+    </ul>
+
+    <h2>Uso en MZ TTS</h2>
+    <p>Publicar este feed no activa el overlay por sí solo. En MZ TTS 1.6.41, selecciona Extenso, el overlay de Chile y aplica el conjunto; los tres fragmentos se validan y activan juntos. General sigue siendo el modo predeterminado.</p>
+    <p>La actualización automática es opcional. Cuando está habilitada con Extenso y un overlay regional activo, la app revisa el feed aproximadamente cada 24 horas, con conexión y batería suficiente.</p>
+
+    <h2>Procedencia</h2>
+    <p>Las grafías se adaptaron de VoiceGarden español v0.6.1, con datos de Wiktionary bajo CC BY-SA 4.0 y atribución a sus colaboradores. La lista spa-LatAm v0.6.1 bajo MIT solo se usó para priorizar; no se incorporó al paquete. No se usaron fonemas. <a href="https://github.com/AACTools/voicegarden-lexicons/releases/tag/v0.6.1">Consultar la fuente VoiceGarden v0.6.1</a>.</p>
   </main>
 </body>
 </html>

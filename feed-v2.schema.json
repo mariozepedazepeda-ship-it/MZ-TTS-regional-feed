@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mariozepedazepeda-ship-it.github.io/MZ-TTS-regional-feed/feed-v2.schema.json",
+  "title": "Cue MZ TTS regional pronunciation feed v2",
+  "description": "Feed de releases regionales; cada release puede contener hasta tres fragmentos que se validan y activan como un único conjunto.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "schema_version", "releases"],
+  "properties": {
+    "format": {
+      "const": "cue-mz-tts-regional-feed-v2"
+    },
+    "schema_version": {
+      "const": 2
+    },
+    "releases": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "$ref": "#/$defs/release"
+      },
+      "uniqueItems": true
+    }
+  },
+  "$defs": {
+    "profileId": {
+      "type": "string",
+      "pattern": "^es-(?:[A-Z]{2}|[0-9]{3})$",
+      "not": {
+        "const": "general"
+      }
+    },
+    "packageId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]{2,79}$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+    },
+    "safeText80": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80,
+      "pattern": "^[^\\u0000-\\u001F\\u007F-\\u009F]+$"
+    },
+    "release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bundle_id",
+        "profile_id",
+        "profile_name",
+        "language_tag",
+        "bundle_version",
+        "entry_count",
+        "shards"
+      ],
+      "properties": {
+        "bundle_id": {
+          "$ref": "#/$defs/packageId"
+        },
+        "profile_id": {
+          "$ref": "#/$defs/profileId"
+        },
+        "profile_name": {
+          "$ref": "#/$defs/safeText80"
+        },
+        "language_tag": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 35
+        },
+        "bundle_version": {
+          "$ref": "#/$defs/version"
+        },
+        "entry_count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 25000
+        },
+        "shards": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "items": {
+            "$ref": "#/$defs/shard"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "shard": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "shard_index",
+        "package_id",
+        "package_format",
+        "profile_id",
+        "profile_name",
+        "language_tag",
+        "package_version",
+        "download_url",
+        "sha256",
+        "provenance",
+        "license",
+        "attribution",
+        "source",
+        "entry_count"
+      ],
+      "properties": {
+        "shard_index": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3
+        },
+        "package_id": {
+          "$ref": "#/$defs/packageId"
+        },
+        "package_format": {
+          "const": "cue-mz-tts-regional-package-v1"
+        },
+        "profile_id": {
+          "$ref": "#/$defs/profileId"
+        },
+        "profile_name": {
+          "$ref": "#/$defs/safeText80"
+        },
+        "language_tag": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 35
+        },
+        "package_version": {
+          "$ref": "#/$defs/version"
+        },
+        "download_url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://mariozepedazepeda-ship-it\\.github\\.io/MZ-TTS-regional-feed/packages/[A-Za-z0-9._-]+\\.mzrp$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "provenance": {
+          "enum": ["synthetic", "licensed"]
+        },
+        "license": {
+          "enum": ["CC0-1.0", "CC-BY-4.0", "CC-BY-SA-4.0"]
+        },
+        "attribution": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300,
+          "pattern": "\\S"
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "entry_count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "provenance": {
+                "const": "synthetic"
+              }
+            },
+            "required": ["provenance"]
+          },
+          "then": {
+            "properties": {
+              "license": {
+                "const": "CC0-1.0"
+              },
+              "source": {
+                "const": "synthetic"
+              },
+              "attribution": {
+                "pattern": "(sintétic|Sintétic|SINTÉTIC|synthetic|Synthetic|SYNTHETIC)"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "source": {
+                "pattern": "^https://",
+                "format": "uri"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
